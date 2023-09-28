@@ -1,4 +1,3 @@
-
 public class Part1 {
     public int findStopCodon(String dna, int startCodonIndex, String stopCodon) {
         int currIndex = dna.indexOf(stopCodon, startCodonIndex);

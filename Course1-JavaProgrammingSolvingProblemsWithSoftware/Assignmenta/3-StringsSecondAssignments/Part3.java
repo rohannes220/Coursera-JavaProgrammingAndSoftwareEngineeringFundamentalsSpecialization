@@ -1,12 +1,4 @@
-
-/**
- * Write a description of class Part3 here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Part3
-{
+public class Part3 {
     public int findStopCodon(String dna, int startCodonIndex, String stopCodon) {
         int currIndex = dna.indexOf(stopCodon, startCodonIndex);
         while (currIndex != -1) {
@@ -18,6 +10,7 @@ public class Part3
         }
         return dna.length();
     };
+
     public String findGene(String dna, int lookFrom) {
         int startCodonIndex = dna.indexOf("ATG", lookFrom);
         if (startCodonIndex == -1) {
@@ -40,20 +33,22 @@ public class Part3
         String gene = dna.substring(startCodonIndex, minValue + 3);
         return gene;
     }
-    public int countGenes(String dna){
-        int start = 0; 
+
+    public int countGenes(String dna) {
+        int start = 0;
         int count = 0;
-        while(true){
-            String gene = findGene(dna,start);
-            if(gene.length() == 0){
-                break; 
+        while (true) {
+            String gene = findGene(dna, start);
+            if (gene.length() == 0) {
+                break;
             }
-            count += 1; 
-            start = dna.indexOf(gene,start) + gene.length(); 
+            count += 1;
+            start = dna.indexOf(gene, start) + gene.length();
         }
-        return count;  
+        return count;
     }
-    public void testCountGenes(){
-        System.out.println(countGenes("ATGTAAGATGCCCTAGT")); 
+
+    public void testCountGenes() {
+        System.out.println(countGenes("ATGTAAGATGCCCTAGT"));
     }
 }

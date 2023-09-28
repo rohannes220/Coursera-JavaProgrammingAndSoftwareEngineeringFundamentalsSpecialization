@@ -1,14 +1,7 @@
-import edu.duke.StorageResource; 
-/**
- * Write a description of class Part1 here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Part1
-{
-    // instance variables - replace the example below with your own
-      public int findStopCodon(String dna, int startCodonIndex, String stopCodon) {
+import edu.duke.StorageResource;
+
+public class Part1 {
+    public int findStopCodon(String dna, int startCodonIndex, String stopCodon) {
         int currIndex = dna.indexOf(stopCodon, startCodonIndex);
         while (currIndex != -1) {
             int difference = currIndex - startCodonIndex;
@@ -61,10 +54,10 @@ public class Part1
             start = dna.indexOf(gene, start) + gene.length();
         }
     }
-    
+
     public StorageResource getAllGenes(String dna) {
         int start = 0;
-        StorageResource genesList = new StorageResource(); 
+        StorageResource genesList = new StorageResource();
         while (true) {
             // try to get the gene
             String gene = findGene(dna, start);
@@ -75,27 +68,27 @@ public class Part1
             }
 
             // if gene is valid add it to the storage resource
-            genesList.add(gene); 
+            genesList.add(gene);
 
             // update start
             start = dna.indexOf(gene, start) + gene.length();
         }
-        return genesList; 
+        return genesList;
     }
-    
-    public void testGetAllGenes(){
+
+    public void testGetAllGenes() {
         String dna = "ATGATCTAATTTATGCTGCAACGGTGAAGA";
-        StorageResource answer = getAllGenes(dna); 
-        System.out.println("dna: " + dna); 
-        for(String gene: answer.data()){
-            System.out.println(gene); 
+        StorageResource answer = getAllGenes(dna);
+        System.out.println("dna: " + dna);
+        for (String gene : answer.data()) {
+            System.out.println(gene);
         }
-        
-        dna = "ATGATCATAAGAAGATAATAGAGGGCCATGTAA"; 
-        answer = getAllGenes(dna); 
-        System.out.println("dna: " + dna); 
-        for(String gene: answer.data()){
-            System.out.println(gene); 
+
+        dna = "ATGATCATAAGAAGATAATAGAGGGCCATGTAA";
+        answer = getAllGenes(dna);
+        System.out.println("dna: " + dna);
+        for (String gene : answer.data()) {
+            System.out.println(gene);
         }
     }
 }

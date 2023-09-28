@@ -1,16 +1,8 @@
-
-/**
- * Write a description of class Part2 here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Part2 {
-    // instance variables - replace the example below with your own
     public int howMany(String stringa, String stringb) {
         int count = 0;
-        
-       int startIndex = 0;
+
+        int startIndex = 0;
         while (true) {
             int currIndex = stringb.indexOf(stringa, startIndex);
             if (currIndex == -1) {
@@ -20,7 +12,7 @@ public class Part2 {
             startIndex = stringa.length() + currIndex;
         }
         return count;
-        
+
         // int currIndex = stringb.indexOf(stringa);
         // while (currIndex != -1) {
         // count += 1;
