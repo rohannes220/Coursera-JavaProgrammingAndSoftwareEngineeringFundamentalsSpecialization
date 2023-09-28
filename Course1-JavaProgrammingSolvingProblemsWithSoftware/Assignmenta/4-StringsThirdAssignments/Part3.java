@@ -205,7 +205,7 @@ public class Part3 {
     }
 
     public void testCountCTG() {
-        FileResource fr = new FileResource("GRch38dnapart.fa");
+        FileResource fr = new FileResource("data/GRch38dnapart.fa");
         String dna = fr.asString();
         System.out.println(countCTG(dna));
     }
@@ -214,7 +214,7 @@ public class Part3 {
         // processDna("HUYATGGUYIOLPOUTOYTAAJKOTRESOUPATGTAAKJOUYHFHASAATGHUYTREQWESUYOPINLIBORTGALOLLOL");
         // processDna("LOLATGTAALOLATGYOUTGASMH");
         // processDna("LOLATGCCCGGGCCCTAGATGCCCGGGCLOGOCCIGGCGTAAATGCCCTAGATGLOLHAHTGA");
-        FileResource fr = new FileResource("GRch38dnapart.fa");
+        FileResource fr = new FileResource("data/GRch38dnapart.fa");
         String dna = fr.asString();
         processDna(dna);
     }
