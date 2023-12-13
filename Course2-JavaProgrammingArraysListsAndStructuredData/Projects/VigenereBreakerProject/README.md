@@ -1,10 +1,10 @@
-# Vigenere Cipher Breaker Project
+# Vigenère Cipher Breaker Project
 
 ### Introduction
 
-- This project breaks strings that are encrypted using a Vigenere Cipher
-- Vigenere cipher is a more complex version of Caesar Cipher. And uses Caesar Cipher cyclically.
-- Vigenere cipher example
+- This project breaks strings that are encrypted using a Vigenère Cipher
+- Vigenère cipher is a more complex version of Caesar Cipher. And uses Caesar Cipher cyclically.
+- Vigenère cipher example
   - Original message: `Meet Me At Dawn`
   - Key: `"DICE" => [3, 8, 2, 4]`
   <p float="left">
@@ -13,7 +13,7 @@
 
 ### Methodology
 
-- Uses the letter frequencies and Caesar Cipher to break the Vigenere Cipher.
+- Uses the letter frequencies and Caesar Cipher to break the Vigenère Cipher.
 - Principles used:
   - HashSet
   - HashMap
