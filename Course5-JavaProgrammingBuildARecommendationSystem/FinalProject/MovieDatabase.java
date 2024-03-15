@@ -7,19 +7,18 @@ public class MovieDatabase {
 
     public static void initialize(String moviefile) {
         if (ourMovies == null) {
-            ourMovies = new HashMap<String,Movie>();
+            ourMovies = new HashMap<String, Movie>();
             loadMovies("data/" + moviefile);
         }
     }
 
     private static void initialize() {
         if (ourMovies == null) {
-            ourMovies = new HashMap<String,Movie>();
+            ourMovies = new HashMap<String, Movie>();
             loadMovies("data/ratedmoviesfull.csv");
         }
-    }	
+    }
 
-	
     private static void loadMovies(String filename) {
         FirstRatings fr = new FirstRatings();
         ArrayList<Movie> list = fr.loadMovies(filename);
@@ -80,12 +79,12 @@ public class MovieDatabase {
     public static ArrayList<String> filterBy(Filter f) {
         initialize();
         ArrayList<String> list = new ArrayList<String>();
-        for(String id : ourMovies.keySet()) {
+        for (String id : ourMovies.keySet()) {
             if (f.satisfies(id)) {
                 list.add(id);
             }
         }
-        
+
         return list;
     }
 

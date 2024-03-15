@@ -1,39 +1,31 @@
-
-/**
- * Write a description of class EfficientRater here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-
 import java.util.*;
 
 public class EfficientRater implements Rater {
     private String myID;
-    private HashMap<String,Rating> myRatings;
+    private HashMap<String, Rating> myRatings;
 
     public EfficientRater(String id) {
         myID = id;
-        myRatings = new HashMap<String,Rating>();
+        myRatings = new HashMap<String, Rating>();
     }
 
     public void addRating(String item, double rating) {
-        Rating r1 = new Rating(item,rating); 
-        myRatings.put(item,r1);
+        Rating r1 = new Rating(item, rating);
+        myRatings.put(item, r1);
     }
 
     public boolean hasRating(String item) {
-        return myRatings.containsKey(item); 
-        }
+        return myRatings.containsKey(item);
+    }
 
     public String getID() {
         return myID;
     }
 
     public double getRating(String item) {
-        if(myRatings.containsKey(item)){
-            Rating r = myRatings.get(item); 
-            return r.getValue(); 
+        if (myRatings.containsKey(item)) {
+            Rating r = myRatings.get(item);
+            return r.getValue();
         }
         return -1;
     }
@@ -44,9 +36,9 @@ public class EfficientRater implements Rater {
 
     public ArrayList<String> getItemsRated() {
         ArrayList<String> list = new ArrayList<String>();
-        for(String key: myRatings.keySet()){
-            list.add(key); 
+        for (String key : myRatings.keySet()) {
+            list.add(key);
         }
-        return list; 
+        return list;
     }
 }
