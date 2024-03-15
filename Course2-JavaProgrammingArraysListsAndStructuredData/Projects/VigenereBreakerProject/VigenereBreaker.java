@@ -2,6 +2,8 @@ import java.util.*;
 import edu.duke.*;
 
 public class VigenereBreaker {
+    // extract a slice of the input message based on the provided slice index and
+    // total number of slices
     public String sliceString(String message, int whichSlice, int totalSlices) {
         StringBuilder sb = new StringBuilder();
         for (int i = whichSlice; i < message.length(); i += totalSlices) {
@@ -11,9 +13,14 @@ public class VigenereBreaker {
         return sb.toString();
     }
 
+    // break the Vigenere cipher for a given encrypted message using multiple
+    // languages
     public void breakVigenere() {
+        // load the encrypted message from a file
         FileResource fr = new FileResource();
         String message = fr.asString();
+
+        // load dictionaries for multiple languages
         HashMap<String, HashSet<String>> languages = new HashMap<String, HashSet<String>>();
         String[] languageNames = new String[] { "Danish", "Dutch", "English", "French", "German", "Italian",
                 "Portuguese", "Spanish" };
@@ -22,9 +29,12 @@ public class VigenereBreaker {
             HashSet<String> currentDictionary = readDictionary(languageFR);
             languages.put(language, currentDictionary);
         }
+
+        //attempt to break the message for all languages
         breakForAllLangs(message, languages);
     }
 
+    // read a dictionary from a file and store it in a HashSet
     public HashSet<String> readDictionary(FileResource fr) {
         HashSet<String> set = new HashSet<String>();
         for (String word : fr.lines()) {
@@ -34,7 +44,7 @@ public class VigenereBreaker {
         return set;
     }
 
-    // In the given language, we are trying to find the most common character
+    // in the given language, we are trying to find the most common character
     private char mostCommonCharIn(HashSet<String> language) {
         char mostCommon = 'a';
         int maxCount = 0;
@@ -48,8 +58,7 @@ public class VigenereBreaker {
         return mostCommon;
     }
 
-    // given a charaacter from above, we see how many times it appears in each word
-    // we then take that amount and compare it to the currentMaxCount
+    // count occurrences of a given letter in a language's dictionary
     private int getCount(char letter, HashSet<String> inputLanguage) {
         int count = 0;
         for (String word : inputLanguage) {
@@ -65,6 +74,7 @@ public class VigenereBreaker {
         return count;
     }
 
+    // count the number of valid words in a message based on a provided dictionary
     public int countWords(String message, HashSet<String> dictionary) {
         int realWords = 0;
         for (String word : message.split("\\W+")) {
@@ -75,6 +85,7 @@ public class VigenereBreaker {
         return realWords;
     }
 
+    //attempt to find the key length for a given encrypted message
     public int[] tryKeyLength(String encrypted, int klength, char mostCommon) {
         int[] keys = new int[klength];
         CaesarCracker cc = new CaesarCracker(mostCommon);
@@ -86,6 +97,7 @@ public class VigenereBreaker {
         return keys;
     }
 
+    // break the Vigenere cipher for a given language using a dictionary
     public String breakForLanguage(String encrypted, HashSet<String> dictionary) {
         char mostCommonCharacter = mostCommonCharIn(dictionary);
         int highestNumWords = 0;
@@ -105,6 +117,7 @@ public class VigenereBreaker {
         return answer;
     }
 
+    // break the Vigenere cipher for all loaded languages and print the result
     public void breakForAllLangs(String encrypted, HashMap<String, HashSet<String>> languages) {
         int maxWords = 0;
         String maxLanguage = null;

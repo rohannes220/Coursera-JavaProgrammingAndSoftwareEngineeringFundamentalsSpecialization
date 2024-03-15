@@ -3,10 +3,13 @@ import edu.duke.*;
 public class Tester {
     // instance variables - replace the example below with your own
     public void testCaesarCipher() {
-        CaesarCipher cc = new CaesarCipher(4);
+        
+        CaesarCipher cc = new CaesarCipher(4); 
+        
         String message = "CHEESE";
         String encrypted = cc.encrypt(message);
         String decrypted = cc.decrypt(encrypted);
+
         System.out.println("The encrypted is: " + encrypted);
         System.out.println("The decrypted is: " + decrypted);
         char c = 'L';
